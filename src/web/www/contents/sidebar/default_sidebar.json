@@ -1,0 +1,26 @@
+[
+  {
+    "name": "sidebar.first_use",
+    "redirect": "first_use"
+  },
+  {
+    "name": "sidebar.languages",
+    "redirect": "index"
+  },
+  {
+    "name": "sidebar.commands",
+    "redirect": "index"
+  },
+  {
+    "name": "sidebar.permissions",
+    "redirect": "index"
+  },
+  {
+    "name": "sidebar.extensions",
+    "redirect": "index"
+  },
+  {
+    "name": "sidebar.create_extension",
+    "redirect": "index"
+  }
+]

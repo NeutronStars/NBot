@@ -1,0 +1,31 @@
+{
+  "sidebar":{
+    "type": "default_sidebar",
+    "id": "fist_use"
+  },
+  "app":{
+    "header":{
+      "title":"first_use.header.title",
+      "subtitle": "first_use.header.subtitle",
+      "buttons":[
+        {
+          "title": "index.header.button.sources",
+          "link": "https://github.com/NeutronStars/NBot"
+        },
+        {
+          "title": "index.header.button.jda",
+          "link": "https://github.com/DV8FromTheWorld/JDA"
+        },
+        {
+          "title": "index.header.button.download",
+          "link": "https://github.com/NeutronStars/NBot/releases/latest"
+        },
+        {
+          "title": "first_user.header.button.java",
+          "link": "https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"
+        }
+      ],
+      "color": "black"
+    }
+  }
+}

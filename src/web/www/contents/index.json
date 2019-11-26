@@ -1,0 +1,48 @@
+{
+  "sidebar":{
+    "type": "default_sidebar",
+    "id": "index"
+  },
+  "app":{
+    "header":{
+      "title":"index.header.title",
+      "subtitles":[
+        "index.header.subtitle"
+      ],
+      "buttons":[
+        {
+          "title": "index.header.button.sources",
+          "link": "https://github.com/NeutronStars/NBot"
+        },
+        {
+          "title": "index.header.button.jda",
+          "link": "https://github.com/DV8FromTheWorld/JDA"
+        },
+        {
+          "title": "index.header.button.download",
+          "link": "https://github.com/NeutronStars/NBot/releases/latest"
+        }
+      ],
+      "color": "black"
+    },
+    "content":[
+      {
+
+      },
+      {
+
+      }
+    ],
+    "footer":{
+      "title":"index.header.title",
+      "subtitle":"index.header.subtitle",
+      "buttons":[
+        {
+          "title": "index.header.button.sources",
+          "link": "https://github.com/NeutronStars/NBot"
+        }
+      ],
+      "color": "black"
+    }
+  }
+}

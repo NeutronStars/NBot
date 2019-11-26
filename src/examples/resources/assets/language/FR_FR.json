@@ -1,0 +1,9 @@
+{
+  "description": "Ceci est la description du plugin.",
+  "command": {
+    "test": {
+      "description": "Ceci est la description de la commande.",
+      "show": "Nombre de Test: %1$s."
+    }
+  }
+}

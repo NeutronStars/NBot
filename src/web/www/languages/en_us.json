@@ -1,0 +1,23 @@
+{
+  "default": true,
+  "name": "English",
+
+  "sidebar.index": "Home",
+  "sidebar.first_use": "First Use",
+  "sidebar.languages": "The languages",
+  "sidebar.commands": "The commands",
+  "sidebar.permissions": "The permissions",
+  "sidebar.extensions": "The extensions",
+  "sidebar.create_extension": "Create a extension",
+
+  "index.header.title": "NBot Documentation",
+  "index.header.subtitle": "Developped by NeutronStars.",
+  "index.header.button.sources": "NBot API Sources",
+  "index.header.button.jda": "Java Discord API",
+  "index.header.button.download": "Download NBot",
+
+  "first_use.header.title": "First Utilisation",
+  "first_use.header.subtitle": "How to install and launch NBot ?",
+
+  "first_user.header.button.java": "Java Development Kit"
+}
