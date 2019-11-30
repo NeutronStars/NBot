@@ -9,7 +9,10 @@ import org.slf4j.spi.LocationAwareLogger;
 
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.IdentityHashMap;
+import java.util.Set;
 
 /**
  * Origin Code by SLF4J-Simple [Link=https://github.com/qos-ch/slf4j/tree/master/slf4j-simple]
@@ -149,16 +152,74 @@ public class BotLogger implements Logger
 
     protected void writeThrowable(String date, String strLevel, String color, Throwable t, PrintStream targetStream) {
         if (t != null) {
-            StringBuilder builder = new StringBuilder();
+            Set<Throwable> set =
+                    Collections.newSetFromMap(new IdentityHashMap<>());
+            set.add(t);
 
+            StringBuilder builder = new StringBuilder();
             builder.append(formatLine(date, strLevel, t.toString()));
 
-            for (StackTraceElement traceElement : t.getStackTrace())
-                builder.append("\n").append(formatLine(date, strLevel, "\tat "+traceElement.toString()));
+            StackTraceElement[] trace = t.getStackTrace();
+            for (StackTraceElement traceElement : trace)
+            {
+                builder.append("\n").append(formatLine(date, strLevel, "\tat " + traceElement));
+            }
+
+            for (Throwable se : t.getSuppressed())
+            {
+                builder.append("\n");
+                this.printEnclosedStackTrace(se, trace, "Suppressed: ", "\t", set, builder, date, strLevel);
+            }
+
+            Throwable ourCause = t.getCause();
+            if (ourCause != null)
+            {
+                builder.append("\n");
+                this.printEnclosedStackTrace(ourCause, trace, "Caused by: ", "", set, builder, date, strLevel);
+            }
 
             String msg = builder.toString();
-            targetStream.println(color + msg);
+            targetStream.println(color + msg + ANSI_RESET);
             source.log(msg);
+        }
+    }
+
+    private void printEnclosedStackTrace(Throwable t, StackTraceElement[] enclosingTrace, String caption, String prefix, Set<Throwable> set, StringBuilder builder, String date, String strLevel) {
+
+        if (set.contains(t)) {
+            builder.append(formatLine(date, strLevel, "\t[CIRCULAR REFERENCE:" + t + "]"));
+        } else {
+            set.add(t);
+            // Compute number of frames in common between this and enclosing trace
+            StackTraceElement[] trace = t.getStackTrace();
+            int m = trace.length - 1;
+            int n = enclosingTrace.length - 1;
+            while (m >= 0 && n >=0 && trace[m].equals(enclosingTrace[n])) {
+                m--; n--;
+            }
+            int framesInCommon = trace.length - 1 - m;
+
+            // Print our stack trace
+            builder.append(formatLine(date, strLevel, prefix + caption + t));
+            for (int i = 0; i <= m; i++)
+                builder.append("\n").append(formatLine(date, strLevel, prefix + "\tat " + trace[i]));
+            if (framesInCommon != 0)
+                builder.append("\n").append(formatLine(date, strLevel, prefix + "\t... " + framesInCommon + " more"));
+
+            // Print suppressed exceptions, if any
+            for (Throwable se : t.getSuppressed())
+            {
+                builder.append("\n");
+                printEnclosedStackTrace(se, trace, "Suppressed: ", prefix + "\t", set, builder, date, strLevel);
+            }
+
+            // Print cause, if any
+            Throwable ourCause = t.getCause();
+            if (ourCause != null)
+            {
+                builder.append("\n");
+                printEnclosedStackTrace(ourCause, trace, "Caused by: ", prefix, set, builder, date, strLevel);
+            }
         }
     }
 
