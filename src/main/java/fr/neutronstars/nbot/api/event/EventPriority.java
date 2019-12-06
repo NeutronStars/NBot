@@ -30,5 +30,32 @@ package fr.neutronstars.nbot.api.event;
  */
 public enum EventPriority
 {
-    LOWEST, LOW, NORMAL, HIGH, HIGHEST
+    LOWEST(0),
+    LOW(1),
+    NORMAL(2),
+    HIGH(3),
+    HIGHEST(4);
+
+    private final int order;
+
+    EventPriority(int order)
+    {
+        this.order = order;
+    }
+
+    public int getOrder()
+    {
+        return order;
+    }
+
+    public static EventPriority[] getEventPriorityByOrder()
+    {
+        EventPriority[] eventPriorities = new EventPriority[EventPriority.values().length];
+
+        for(EventPriority eventPriority : EventPriority.values())
+        {
+            eventPriorities[eventPriority.order] = eventPriority;
+        }
+        return eventPriorities;
+    }
 }
