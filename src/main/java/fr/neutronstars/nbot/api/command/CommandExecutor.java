@@ -40,4 +40,21 @@ public interface CommandExecutor
      * @return If the user needs to be saved.
      */
     boolean onCommand(NBotUser user, Message message, String... args);
+
+    /**
+     * The method is called when a user executes the help command with the name of this command.
+     *
+     * @param user
+     *      The user who execute the command.
+     * @param message
+     *      The message of user.
+     * @param args
+     *      The list of arguments after the name of the command.
+     *
+     * @return If the method was correctly executed.
+     */
+    default boolean onCommandHelp(NBotUser user, Message message, String... args)
+    {
+        return false;
+    }
 }
