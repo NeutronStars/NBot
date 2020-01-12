@@ -238,3 +238,42 @@ svg.svg-inline--fa.fa-bars.fa-w-14{
     text-align: center;
   }
 }
+
+.content_main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content_main_title{
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 30px;
+  color: #202124;
+  text-align: center;
+  width: 90%;
+}
+
+.content_main_subtitle{
+  margin: 20px 0;
+  font-weight: 800;
+  font-size: 25px;
+  width: 90%;
+  color: #27292c;
+}
+
+.content_main_divider{
+  width: 90%;
+  height: 1px;
+  border-radius: 10px;
+  background-color: #80868b;
+  margin: 20px 0;
+}
+
+.content_main_blank{
+  width: 90%;
+  height: 1px;
+  border-radius: 10px;
+  margin: 10px 0;
+}

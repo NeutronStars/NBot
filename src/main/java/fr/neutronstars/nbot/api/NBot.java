@@ -163,6 +163,34 @@ public abstract class NBot
     public abstract Optional<String> getString(@NotNull String name, @NotNull String... args);
 
     /**
+     * Predicts the name relative to the arguments provided.
+     * <p>Examples:</p>
+     * <p><code>getString("hi world", "bar", "foo, "hello world")</code> return an optional with the string "hello world".</p>
+     * @param name
+     *      predict world
+     * @param args
+     *      argument provided for the prediction
+     * @return {@link Optional} of predicts world relative to arguments provided.
+     */
+    @NotNull
+    public abstract Optional<String> getStringPrediction(@NotNull String name, @NotNull String... args);
+
+    /**
+     * Predicts the name relative to the arguments provided with a rate, in percentage, minimum acceptable.
+     * <p>Examples:</p>
+     * <p><code>getString("hi wold", 90.0d, "bar", "foo, "hello world")</code> return an optional empty.</p>
+     * @param name
+     *      predict world
+     * @param rate
+     *      rate in percentage for the prediction to be valid. (from 0.0 to 100.0)
+     * @param args
+     *      argument provided for the prediction
+     * @return {@link Optional} of predicts world relative to arguments provided.
+     */
+    @NotNull
+    public abstract Optional<String> getStringPrediction(@NotNull String name, @NotNull double rate, @NotNull String... args);
+
+    /**
      * Stop the program.
      */
     public abstract void shutdown();

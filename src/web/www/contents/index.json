@@ -27,10 +27,15 @@
     },
     "content":[
       {
-
+        "type":"title",
+        "text": "Mon titre"
       },
       {
-
+        "type":"subtitle",
+        "text":"Mon sous-titre"
+      },
+      {
+        "type":"divider"
       }
     ],
     "footer":{

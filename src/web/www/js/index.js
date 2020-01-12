@@ -160,7 +160,7 @@ function loadHeader(header){
     html += '</div>'
   }
 
-  return html;
+  return html+"</div>";
 }
 
 function addSubtitle(subtitle){
@@ -176,7 +176,25 @@ function addButtonRedirect(button){
 }
 
 function loadContent(content){
-  return "";
+  let html = "<div class=\"content_main\">";
+  content.forEach(object => {
+    if(object['type'])
+    { 
+      html+="<div class=\"content_main_"+object['type']+"\">"
+      switch(object["type"])
+      {
+        case "title":
+        case "subtitle":
+          if(object['text'])
+          {
+            html+=object['text'];
+          }
+          break;
+      }
+      html+="</div>"
+    }
+  });
+  return html+"</div>";
 }
 
 function loadFooter(footer){
