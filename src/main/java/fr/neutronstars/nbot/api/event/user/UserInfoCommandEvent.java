@@ -42,7 +42,7 @@ public class UserInfoCommandEvent extends NBotUserEvent
      * The constructor for boot the user.
      * @param user the instance of user.
      */
-    protected UserInfoCommandEvent(NBotUser user, @NotNull Color color)
+    public UserInfoCommandEvent(NBotUser user, @NotNull Color color)
     {
         super(user);
         this.color = color;
